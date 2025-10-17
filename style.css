@@ -1,0 +1,193 @@
+/* === 顏色與基本設定 === */
+/* 
+  :root 是全域變數區，可以定義網站會用到的主要顏色或字型設定。
+  這裡設定了主色、深色版本、文字顏色、背景顏色等。
+  使用時用 var(--變數名稱) 就能套用。
+*/
+:root {
+  --main-color: #a9a9a9;   /* 主色：亮橘黃色（按鈕、導覽列背景） */
+  --main-dark: #1a1a1a;    /* 主色加深版（滑鼠移過去時使用） */
+  --text-color: #ff8c00;      /* 主要文字顏色（深灰） */
+  --bg-light: #000000;     /* 頁面背景色（淡黃色） */
+}
+
+/* === 全站 body 設定 === */
+body {
+  font-family: "Noto Sans TC", sans-serif;  /* 全站字體（使用 Noto Sans TC 中文字型） */
+  background-color: var(--bg-light);        /* 套用上面定義的背景色變數 */
+  color: var(--text-color);                 /* 套用文字顏色變數 */
+  margin: 0;                                /* 取消瀏覽器預設外距 */
+  line-height: 1.6;                         /* 行距設為 1.6，讓文字比較好閱讀 */
+}
+
+/* === 導覽列樣式 === */
+.nav {
+  background-color: var(--main-color);  /* 導覽列背景使用主色 */
+  text-align: center;                   /* 導覽列項目置中 */
+  padding: 12px;                        /* 上下內距 12px */
+}
+
+/* 導覽列裡的連結樣式 */
+.nav__link {
+  color: #fff;              /* 文字顏色白色 */
+  text-decoration: none;    /* 移除底線 */
+  margin: 0 12px;           /* 左右間距 12px */
+  font-weight: bold;        /* 加粗字體 */
+}
+
+/* 滑鼠移到連結上時的效果 */
+.nav__link:hover {
+  color: var(--main-dark);  /* 顏色變深一點 */
+}
+
+/* === 容器設定 === */
+/* 
+  container 是主要版面容器，用來限制網頁內容最大寬度，
+  讓內容不會太寬、保持整齊置中。
+*/
+.container {
+  width: 80%;          /* 寬度為螢幕的 80% */
+  max-width: 900px;    /* 最大寬度 900px，避免在大螢幕太寬 */
+  margin: 20px auto;   /* 上下外距 20px，左右自動置中 */
+}
+
+/* === 標題樣式 === */
+h1, h2 {
+  text-align: center;         /* 標題置中 */
+  color: var(--text-color);   /* 使用主要文字顏色 */
+}
+
+/* === 按鈕樣式 === */
+.btn {
+  background-color: var(--main-color);  /* 背景使用主色 */
+  color: white;                         /* 按鈕文字白色 */
+  padding: 10px 18px;                   /* 上下 10px、左右 18px 內距 */
+  border: none;                         /* 移除預設邊框 */
+  border-radius: 8px;                   /* 圓角 8px */
+  cursor: pointer;                      /* 滑鼠移過去變手指圖示 */
+  display: inline-block;                /* 讓按鈕能正常排列 */
+}
+
+/* === 滑鼠移上按鈕的互動效果 === */
+.btn:hover {
+  background-color: var(--main-dark);  
+  /* 顏色變化：
+     當滑鼠移上去時，背景顏色會改成 --main-dark（主色加深版），
+     給使用者「可互動」的視覺回饋。 */
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);  
+  /* 陰影效果：
+     在按鈕下方產生柔和陰影（X 位移 0、Y 位移 4px、模糊 8px），
+     顏色為半透明黑色 rgba(0,0,0,0.2)。
+     讓按鈕看起來浮起、有立體感。 */
+
+  transform: translateY(-2px);  
+  /* 位移效果：
+     按鈕在 hover 時往上移動 2px，
+     模擬「浮起」的感覺。配合 box-shadow 看起來更真實。 */
+     
+}
+/* === 按鈕被點擊時的效果（Active 狀態） === */
+.btn:active {
+  transform: translateY(1px);  
+  /* 向下位移：
+     當按鈕被點擊（滑鼠按住未放開）時，
+     元素會向下移動 1px，
+     模擬「被按下去」的視覺效果。 */
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* 陰影變小：
+     陰影的距離（Y=2px, 模糊=4px）比 hover 狀態更小，
+     看起來像是按鈕貼近背景、真的被壓下去了。 */
+}
+
+
+/* === 表格樣式 === */
+table {
+  width: 100%;                 /* 表格寬度佔滿容器 */
+  border-collapse: collapse;   /* 合併邊框線（不會重疊出雙線） */
+  margin-top: 20px;            /* 與上方內容保留間距 */
+}
+
+/* 表格的儲存格（標題與內容）共用樣式 */
+th, td {
+  border: 1px solid #ccc;      /* 邊框顏色淺灰色 */
+  padding: 10px;               /* 內距 10px */
+  text-align: center;          /* 內容置中 */
+}
+
+/* 表頭（th）另外加上背景色 */
+th {
+  background-color: #fff3cd;   /* 淡黃色背景 */
+}
+
+/* === 表單樣式 === */
+form {
+  width: 80%;             /* 寬度佔容器的 80% */
+  max-width: 500px;       /* 最寬 500px */
+  margin: 0 auto;         /* 置中顯示 */
+}
+
+/* 輸入框與文字區塊共用樣式 */
+input, textarea {
+  width: 100%;             /* 寬度撐滿父容器 */
+  padding: 10px;           /* 內距 10px */
+  margin-top: 8px;         /* 與上方標籤的距離 */
+  border: 1px solid #ccc;  /* 邊框淺灰色 */
+  border-radius: 6px;      /* 圓角 6px */
+}
+
+/* 表單的標籤（文字說明） */
+label {
+  font-weight: bold;       /* 加粗讓標籤更明顯 */
+}
+
+/* === 照片牆樣式 === */
+/*
+  gallery 是用 CSS Grid 建立的圖片牆。
+  repeat(auto-fill, minmax(200px, 1fr)) 代表：
+  - 每張圖片最小 200px，最多平均分配一整列空間。
+  - 會自動依螢幕大小換行（RWD）。
+*/
+.gallery {
+  display: grid;                             /* 使用格線布局 */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 自動分欄 */
+  gap: 15px;                                 /* 每張圖片之間的間距 15px */
+  margin-top: 20px;                          /* 與標題間距 */
+}
+
+/* 圖片外觀設定 */
+.gallery img {
+  width: 100%;                               /* 圖片撐滿格子寬度 */
+  height: 180px;                             /* 固定高度 180px（保持整齊） */
+  object-fit: cover;                         /* 圖片裁切填滿，不變形 */
+  border-radius: 12px;                       /* 圓角 12px */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);     /* 添加陰影，讓圖片有立體感 */
+  transition: transform 0.2s;                /* 設定 hover 時的放大動畫時間 */
+}
+
+/* 滑鼠移過圖片時的放大效果 */
+.gallery img:hover {
+  transform: scale(1.05);                    /* 放大 5% */
+}
+
+.avatar {
+  width: 250px;              /* 頭貼大小 */
+  height: 250px;             /* 設定高度，確保為正方形 */
+  border-radius: 50%;        /* 四角圓弧成圓形 */
+  object-fit: cover;         /* 圖片填滿容器，不變形 */
+  display: block;            /* 讓圖片可以置中 */
+  margin: 0 auto;            /* 水平置中 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* 加一點陰影讓頭貼更立體 */
+  transition: transform 0.2s ease; /* 加上動畫過渡 */
+}
+
+.avatar:hover {
+  transform: scale(1.05);    /* 滑鼠移上去放大 */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* 陰影加強，產生懸浮感 */
+}
+
+.btn-group {
+  text-align: right; /* 改成 right 就靠右 */
+  margin-top: 10px;
+}
